@@ -9,7 +9,7 @@ then
     done
 
 
-    echo "PostgreSQL started"
+    echo "PostgreeSQL iniciado!"
 fi
 
 exec "$@"
