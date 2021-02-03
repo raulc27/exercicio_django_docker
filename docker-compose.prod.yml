@@ -3,6 +3,7 @@ version: '3.7'
 services:
     web:
         build: ./app
+        
         command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
         ports:
             - 8000:8000
@@ -16,6 +17,12 @@ services:
             - postgres_data:/var/lib/postgresql/data/
         env_file:
             - ./app/hello_django/.env.prod.db
+    nginx:
+        build: ./nginx
+        ports:
+            - 1337:80
+        depends_on:
+            - web
 
 volumes:
     postgres_data:
